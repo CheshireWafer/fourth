@@ -32,7 +32,6 @@ $user1=$user1[0];
     <link rel="stylesheet" href="css/mayo.css">
 </head>
 <style>
-
     div1 {
         position: absolute;
         top: 20%;
@@ -58,7 +57,7 @@ $user1=$user1[0];
     <div1>
         <h2>
             <?php
-            print "$user";
+                print "$user";
             ?>
         </h2>
         <br>

@@ -23,7 +23,7 @@ if (mysqli_query($link, $query)) {
     $result = mysqli_query($link, $query);
     setcookie('cookie_token', $token);
     setcookie('cookie_create_time', time());
-    header("Location: index.php");
+    header("Location: ../index.php");
     mysqli_close($link);
     die();
 }
