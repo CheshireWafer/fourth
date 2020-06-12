@@ -1,3 +1,10 @@
+<?php
+   if (isset($_COOKIE['cookie_token'])) {
+        header("Location: index.php");
+        die();
+    }
+ ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -41,7 +48,7 @@
             <form class="login100-form validate-form" action="validation/save_user.php" method="post">
                 <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
                     <span class="label-input100">Username</span>
-                    <input class="input100" type="text" name="username" placeholder="Enter username">
+                    <input class="input100" type="text" name="login" placeholder="Enter username">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -53,7 +60,7 @@
 
                 <div class="flex-sb-m w-full p-b-30">
                     <div>
-                        <a href="index.html" class="txt1">
+                        <a href="login.php" class="txt1">
                             Login to account
                         </a>
                     </div>

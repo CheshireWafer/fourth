@@ -1,24 +1,35 @@
 <?php
-require_once "connect.php";
+require_once 'connect.php';
 
-$username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
-$password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+$login=$_POST['login'];
+$password=$_POST['password'];
 
-if (mb_strlen($username) < 4 || mb_strlen($username) > 20){
-    echo "Недопустимая длина логина";
-    exit();
-} elseif (mb_strlen($password) < 8 || mb_strlen($password) > 30){
-    echo "Недопустимая длина пароля (от 8 до 20 символов)";
-    exit();
+$query="SELECT login FROM users";
+$result=mysqli_query($link, $query);
+for ($i=0; $i<mysqli_num_rows($result); ++$i){
+    $acc = mysqli_fetch_row($result);
+    if($login==$acc[0]){
+        header("Location: signupExist.php");
+        die();
+    }
 }
-
-$salt = "wvwu75bwk0m";
-$password = md5($password.$salt);
-
-$mysqli->query("INSERT INTO `user` (`login`, `password`) VALUES ('$username', '$password')");
-
-$mysqli->close();
-
-header('Location: /');
-
+mysqli_free_result($result);
+$hash_password=password_hash($password,PASSWORD_BCRYPT);
+$password=$hash_password;
+$query = "INSERT INTO users (login, password) VALUES ('$login', '$password')";
+if (mysqli_query($link, $query)) {
+    $token=bin2hex(random_bytes(32));
+    $query = "UPDATE users SET token = '$token' WHERE login = '$login'";
+    $result = mysqli_query($link, $query);
+    setcookie('cookie_token', $token);
+    setcookie('cookie_create_time', time());
+    header("Location: index.php");
+    mysqli_close($link);
+    die();
+}
+else {
+    echo "Error: " . $query . "<br>" . mysqli_error($link);
+    mysqli_close($link);
+    die();
+}
 ?>
