@@ -2,7 +2,7 @@
     $host = "localhost";
     $user = "root";
     $password = "92hJt6Su2nc";
-    $database = "pig";
+    $database = "game";
 
     $link = new mysqli($host, $user, $password, $database);
 
