@@ -28,7 +28,7 @@ for ($i=0; $i<mysqli_num_rows($result); ++$i){
     }
 }
 mysqli_close($link);
-header("Location: loginDOESNTEXIST.php");
+header("Location: loginWrongPass.php");
 die();
 exist:
 $query="SELECT password FROM users WHERE login = '$login'";
