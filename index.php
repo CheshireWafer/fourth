@@ -12,10 +12,7 @@ $user=$user[0];
 $create_time=$_COOKIE['cookie_create_time'];
 $re_time=time()-$create_time;
 if ($re_time > 3600) {
-    try {
-        $token = bin2hex(random_bytes(32));
-    } catch (Exception $e) {
-    }
+    $token = bin2hex(random_bytes(32));
     $query="UPDATE users SET token = '$token' WHERE login = '$user'";
     $result=mysqli_query($link, $query);
     setcookie('cookie_create_time', time());
@@ -94,7 +91,7 @@ setcookie('cookie_time', 0);
     <!--===============================================================================================-->
 </head>
 <body>
-<form method="post" action="awaiting.php">
+<form method="POST" action="awaiting.php">
     <div align="center">
         <br> <h3 style="font-family: 'Beer money',sans-serif">
             <a href="RateTable.php" , style="color: #151719"> Таблица рейтингов </a>

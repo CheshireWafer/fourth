@@ -45,7 +45,7 @@ if (isset($_COOKIE['cookie_token'])) {
 					</span>
             </div>
 
-            <form class="login100-form validate-form" action="validation/auth.php" method="post">
+            <form class="login100-form validate-form" action="validation/auth.php" method="POST">
                 <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
                     <span class="label-input100">Username</span>
                     <input class="input100" type="text" name="login" placeholder="Enter username">
