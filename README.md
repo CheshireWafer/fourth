@@ -9,8 +9,8 @@
 ### Установка Apache
 
 Установим Apache используя менеджер пакетов Ubuntu apt:
-«` $ sudo apt update
- $ sudo apt install apache2 «`
+` $ sudo apt update `
+` $ sudo apt install apache2 `
 
 ### Установка MySQL
 
@@ -30,8 +30,8 @@
 
 Установите Git с помощью команды ` $ sudo apt install git `
 Теперь, когда вы установили Git, вам нужно настроить его, чтобы сгенерированные сообщения о внесении содержали корректную информацию. Это можно сделать с помощью команды `git config`.
-«` $ git config --global user.name "Your Name"
- $ git config --global user.email "youremail@domain.com" «`
+` $ git config --global user.name "Your Name" `
+` $ git config --global user.email "youremail@domain.com" `
 Через терминал смените директорию ` $ cd /var/www `
 Инициализируйте гит ` $ git init `
 Клонируйте репозиторий командой ` $ git clone https://github.com/CheshireWafer/fourth.git `
